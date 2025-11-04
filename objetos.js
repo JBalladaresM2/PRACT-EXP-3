@@ -20,7 +20,26 @@
 // Salida:
 // Serie de Fibonacci (8 términos): 0, 1, 1, 2, 3, 5, 8, 13
 
+function SerieFibonacci(numero) {
+    let anterior = 0
+    let actual = 1
+    let nuevo
+    let serie = []
 
+    while (anterior <= numero) {
+        nuevo = anterior + actual
+        serie.push(anterior)
+        anterior = actual
+        actual = nuevo
+    }
+
+    return serie
+}
+
+function ejercicio_11() {
+    const objeto = {"numero": 8}
+    console.log(`Serie de Fibonacci (${objeto.numero} términos): ${SerieFibonacci(objeto.numero).join(", ")}`)
+}
 
 // 2. Divisores de un número (objeto)
 // Descripción:
@@ -33,7 +52,21 @@
 // Salida:
 // Divisores de 12: 1, 2, 3, 4, 6, 12
 
+function DivisoresNumero(numero) {
+    let lista = []
+    for (let i = 1; i <= numero; i++) {
+        if (numero % i === 0) {
+            lista.push(i)
+        }
+    }
+    
+    return lista
+}
 
+function ejercicio_12() {
+    const objeto = {"numero": 12}
+    console.log(`Divisores de ${objeto.numero}: ${DivisoresNumero(objeto.numero).join(", ")}`) 
+}
 
 // 3. Suma de los divisores de un número
 // Descripción:
@@ -48,7 +81,21 @@
 // Salida:
 // Suma de divisores: 28
 
+function SumaDivisoresNumero(numero) {
+    const divisores = DivisoresNumero(numero)
+    let suma = 0
 
+    for (let i = 0; i < divisores.length; i++) {
+        suma += divisores[i]
+    }
+
+    return suma
+}
+
+function ejercicio_13() {
+    const objeto = {"numero": 12}
+    console.log(`Suma de divisores: ${SumaDivisoresNumero(objeto.numero)}`)
+}
 
 // 4. Verificar si el número de un objeto es perfecto
 // Descripción:
@@ -64,7 +111,31 @@
 // Salida:
 // El número 6 es perfecto.
 
+function NumeroPerfecto(numero) {
+    let divisores = []
+    let suma = 0
 
+    for (let i = 1; i < numero; i++) {
+        if (numero % i === 0) {
+            divisores.push(i)
+        }
+    }
+    
+    for (let i = 0; i < divisores.length; i++) {
+        suma += divisores[i]
+    }
+
+    if (suma === numero) {
+        return "es perfecto"
+    } else {
+        return "no es perfecto"
+    }
+}
+
+function ejercicio_14() {
+    let objeto = {"numero": 6}
+    console.log(`El número ${objeto.numero} ${NumeroPerfecto(objeto.numero)}`)
+}
 
 // 5. Verificar si el número es primo
 // Descripción:
@@ -77,7 +148,20 @@
 // Salida:
 // El número 11 es primo.
 
+function NumeroPrimo(numero) {
+    for (let i = 2; i < numero; i++) {
+        if (numero % i === 0) {
+            return "no es primo"
+        }
+    }
 
+    return "es primo"
+}
+
+function ejercicio_15() {
+    let objeto = {"numero": 11}
+    console.log(`El número ${objeto.numero} ${NumeroPrimo(objeto.numero)}`)
+}
 
 // 6. Invertir los dígitos de un número
 // Descripción:
@@ -93,7 +177,22 @@
 // Salida:
 // Número invertido: 4321
 
+function InvertirDigitos(numero) {
+    let numero_invertido = 0
 
+    while (numero > 0) {
+        let ultimo = numero % 10
+        numero_invertido = numero_invertido * 10 + ultimo
+        numero = Math.floor(numero / 10)
+    }
+
+    return numero_invertido
+}
+
+function ejercicio_16() {
+    const objeto = {"numero": 1234}
+    console.log(`Número invertido: ${InvertirDigitos(objeto.numero)}`)
+}
 
 // 7. Contar dígitos de un número
 // Descripción:
@@ -106,7 +205,22 @@
 // Salida:
 // El número 9876 tiene 4 dígitos.
 
+function ContarDigitosNumero(numero) {
+    debugger
+    let contador = 0
 
+    while (numero > 1) {
+        numero = numero / 10
+        contador++
+    }
+
+    return contador
+}
+
+function ejercicio_17() {
+    const objeto = {"numero": 9876}
+    console.log(`El número ${objeto.numero} tiene ${ContarDigitosNumero(objeto.numero)} dígitos`)
+}
 
 // 8. Factorial de un número
 // Descripción:
@@ -121,7 +235,18 @@
 // Salida:
 // Factorial de 5 = 120
 
+function FactorialNumero(numero) {
+    let fact = 1
+    for (let i = 1; i <= numero; i++) {
+        fact *= i
+    }
+    return fact
+}
 
+function ejercicio_18() {
+    const objeto = {"numero": 5}
+    console.log(`Factorial de ${objeto.numero} = ${FactorialNumero(objeto.numero)}`)
+}
 
 // 9. Sumas sucesivas
 // Descripción:
@@ -136,7 +261,18 @@
 // Salida:
 // Resultado: 12
 
+function SumasSucesivas(numero, veces) {
+    let resultado = 0
+    for (let i = 0; i < veces; i++) {
+        resultado += numero
+    }
+    return resultado
+}
 
+function ejercicio_19() {
+    const objeto = {"numero": 3, "veces": 4}
+    console.log(`Resultado: ${SumasSucesivas(objeto.numero, objeto.veces)}`)
+}
 
 // 10. Restas sucesivas
 // Descripción:
@@ -151,7 +287,17 @@
 // Salida:
 // Resultado final: 3
 
+function RestasSucesivas(numero, numero2) {
+    while (numero > numero2) {
+        numero -= numero2
+    }
+    return numero
+}
 
+function ejercicio_20() {
+    const objeto = {"numero": 15, "numero2": 4}
+    console.log(`Resultado final: ${RestasSucesivas(objeto.numero, objeto.numero2)}`)
+}
 
 //  BLOQUE 2: Colección de Objetos (Listas de Números)
 // En este bloque, se procesan listas de objetos, aplicando los mismos algoritmos del bloque
